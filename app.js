@@ -206,5 +206,5 @@ function manageSpinner(status) {
   }
 }
 
-// loadCategories();
-// loadAllTress();
+loadCategories();
+loadAllTress();
