@@ -60,7 +60,6 @@ const displayTrees = (plants) => {
   cardsContainer.innerHTML = "";
   //   get into each tree
   for (const plant of plants) {
-    console.log(plant);
     const { id, image, name, description, category, price } = plant;
     const div = document.createElement("div");
     div.className = "bg-white shadow-sm p-2 card flex flex-col h-[480px]";
@@ -73,7 +72,7 @@ const displayTrees = (plants) => {
       alt="${name}" />
       </figure>
       <div class="flex-1">
-    <h2 class="card-title">
+    <h2 onclick="loadDetails(${id})" class="card-title cursor-pointer">
       ${name}
     </h2>
     <p>${description ? description.slice(0, 60) : "working on it"}</p>
@@ -86,6 +85,57 @@ const displayTrees = (plants) => {
     `;
     cardsContainer.append(div);
   }
+};
+
+// all tress button control
+document.getElementById("all-trees-btn").addEventListener("click", (e) => {
+  removeClass("btn-tree");
+  e.target.classList.add("active");
+  loadAllTress();
+});
+
+// =====> load details <======
+
+const loadDetails = (id) => {
+  console.log(id);
+  const url = `https://openapi.programming-hero.com/api/plant/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => diplsyDetails(data.plants));
+};
+
+// ======> Display Details <========
+
+const diplsyDetails = (plant) => {
+  const { name, image, description, category, price } = plant;
+  const modalContainer = document.getElementById("modal-container");
+  const modalBtn = document.getElementById("my_modal_5");
+  modalContainer.innerHTML = "";
+
+  //   create div
+  const div = document.createElement("div");
+  div.className = "bg-white shadow-sm p-2 card flex flex-col h-[480px]";
+
+  div.innerHTML = `
+    
+    <figure class="h-[200px]">
+        <img class=" w-full h-full object-cover"
+      src="${image}"
+      alt="${name}" />
+      </figure>
+      <div class="flex-1">
+    <h2 class="card-title cursor-pointer">
+      ${name}
+    </h2>
+    <p>${description ? description : "working on it"}</p>
+    <div class="flex justify-between my-4">
+      <div class="text-[#15803D] px-3 py-1 rounded-full bg-[#DCFCE7]">${category}</div>
+      <div class="font-bold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${price}</div>
+    </div>
+  </div>
+    `;
+  modalContainer.append(div);
+  modalBtn.showModal();
 };
 
 loadCategories();
