@@ -130,11 +130,16 @@
           <!-- CARDS CONTAINER END -->
 
           <!-- CART START -->
-          <div
-            id="cart"
-            class="col-span-12 lg:col-span-2 border bg-white rounded"
-          >
-            <h2>CART</h2>
+          <div class="col-span-12 lg:col-span-2 bg-white rounded">
+            <h2 class="font-bold">Your Cart</h2>
+            <div id="carts-container"></div>
+            <div class="flex justify-between">
+              <h2 class="font-bold">Total:</h2>
+              <h2 class="font-bold">
+                <i class="fa-solid fa-bangladeshi-taka-sign"></i
+                ><span id="total">00</span>
+              </h2>
+            </div>
           </div>
           <!-- CART END -->
         </div>
@@ -142,7 +147,6 @@
 
         <!-- MODAL -->
 
-        <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
         <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
           <div class="modal-box">
             <div id="modal-container"></div>

@@ -1,4 +1,6 @@
 // common function
+// CART
+let cart = [];
 
 const removeClass = (className) => {
   const allBtns = document.getElementsByClassName("btn-tree");
@@ -81,7 +83,7 @@ const displayTrees = (plants) => {
       <div class="font-bold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${price}</div>
     </div>
   </div>
-  <button class="btn bg-[#15803D] text-white font-bold w-full rounded-full">Add to Cart</button>
+  <button onclick="loadCart('${name}',${price},${id})" class="btn bg-[#15803D] text-white font-bold w-full rounded-full">Add to Cart</button>
     `;
     cardsContainer.append(div);
   }
@@ -138,5 +140,50 @@ const diplsyDetails = (plant) => {
   modalBtn.showModal();
 };
 
+// ======> Cart Control <=======
+const loadCart = (treeName, price, id) => {
+  const treeInfo = {};
+  treeInfo.name = treeName;
+  treeInfo.price = price;
+  treeInfo.id = id;
+  cart.push(treeInfo);
+  //   const newCart = [...cart, treeInfo];
+  displayCart(cart);
+};
+// DISPLAY CART
+function displayCart(trees) {
+  const cartContainer = document.getElementById("carts-container");
+  cartContainer.innerHTML = "";
+  const totalField = document.getElementById("total");
+  if (trees.length === 0) {
+    cartContainer.innerHTML = "";
+    totalField.innerText = 0;
+    return;
+  }
+
+  let totalPrice = 0;
+  for (const tree of trees) {
+    const { name, price, id } = tree;
+    totalPrice = parseInt(totalPrice) + price;
+
+    const div = document.createElement("div");
+    div.className = "flex items-center justify-between bg-[#F0FDF4] my-3";
+    div.innerHTML += `
+    <div>
+    <h2>${name}</h2>
+    <h2>${price}</h2>
+    </div>
+    <button onclick="filterCart(${id})" class="btn">❌</button>
+  `;
+    cartContainer.append(div);
+  }
+  totalField.innerText = totalPrice;
+}
+
+function filterCart(id) {
+  //   console.log(cart);
+  cart = cart.filter((el) => el.id != id);
+  displayCart(cart);
+}
 loadCategories();
 loadAllTress();
