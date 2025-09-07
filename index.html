@@ -9,7 +9,14 @@
       href="https://png.pngtree.com/png-vector/20220831/ourmid/pngtree-banyan-tree-logo-design-vector-png-image_6131481.png"
       type="image/x-icon"
     />
-
+    <!-- FontAwesome Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- Links of Tailwind and Daisy UI -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5"
@@ -17,6 +24,9 @@
       type="text/css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Main Css Link -->
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
@@ -85,6 +95,49 @@
       </section>
       <!-- Banner End -->
     </header>
+
+    <!-- Main Start -->
+    <main class="bg-[#f0fdf4]">
+      <section class="trees py-24 w-11/12 mx-auto">
+        <h2 class="text-center font-bold text-3xl">Choose Your Trees</h2>
+
+        <!-- Trees related information Start -->
+        <div class="all-information my-9 grid grid-cols-12 gap-3">
+          <!-- TREE CATEGORIES START -->
+          <div id="tree-categories" class="col-span-12 lg:col-span-2">
+            <h2 class="font-bold">categories</h2>
+            <div id="categories-container" class="pr-3">
+              <button
+                id="all-trees-btn"
+                class="btn btn-tree active lg:w-full mt-2"
+              >
+                All Trees
+              </button>
+            </div>
+          </div>
+          <!-- TREE CATEGORIES End -->
+
+          <!-- CARDS CONTAINER START -->
+          <div
+            id="tree-cards-container"
+            class="col-span-12 lg:col-span-8 grid sm:grid-cols-2 md:grid-cols-3 gap-2 items-stretch"
+          ></div>
+          <!-- CARDS CONTAINER END -->
+
+          <!-- CART START -->
+          <div
+            id="cart"
+            class="col-span-12 lg:col-span-2 border bg-white rounded"
+          >
+            <h2>CART</h2>
+          </div>
+          <!-- CART END -->
+        </div>
+        <!-- Trees related information End-->
+      </section>
+    </main>
+    <!-- Main End -->
+
     <!-- Script File -->
     <script src="app.js"></script>
   </body>
