@@ -94,11 +94,16 @@
         </div>
       </section>
       <!-- Banner End -->
+
+      <!-- LOADER -->
+      <section id="loader" class="flex justify-center hidden">
+        <span class="loading loading-infinity loading-xl"></span>
+      </section>
     </header>
 
     <!-- Main Start -->
     <main class="bg-[#f0fdf4]">
-      <section class="trees py-24 w-11/12 mx-auto">
+      <section class="trees py-20 w-11/12 mx-auto">
         <h2 class="text-center font-bold text-3xl">Choose Your Trees</h2>
 
         <!-- Trees related information Start -->
@@ -130,7 +135,7 @@
           <!-- CARDS CONTAINER END -->
 
           <!-- CART START -->
-          <div class="col-span-12 lg:col-span-2 bg-white rounded">
+          <div class="col-span-12 lg:col-span-2 bg-white rounded px-1">
             <h2 class="font-bold">Your Cart</h2>
             <div id="carts-container"></div>
             <div class="flex justify-between">
@@ -158,6 +163,60 @@
             </div>
           </div>
         </dialog>
+      </section>
+
+      <!-- About the Campaign section -->
+      <section class="campaign w-11/12 mx-auto pb-24">
+        <h1 class="text-center my-5 text-3xl font-bold">About the Campaign</h1>
+        <div
+          class="campaign-container flex flex-col md:flex-row items-center gap-5"
+        >
+          <div class="campaign-img md:w-1/2">
+            <img src="./assets/about.png" alt="campaign image" />
+          </div>
+
+          <div class="campaign-des md:w-1/2">
+            <p>
+              Green Earth is a global tree plantation initiative dedicated to
+              fighting climate change. Since our start, we’ve planted over
+              500,000 trees worldwide. By joining our campaign, you help restore
+              forests, create habitats for wildlife, and combat global warming.
+            </p>
+            <ul class="list-disc my-3 px-3 sm:px-0">
+              <li>Restoration of natural habitats</li>
+              <li>Improvement of air quality</li>
+              <li>Support for local communities</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- Impact section -->
+      <section class="impact bg-[#cff0dc] py-20">
+        <h1 class="text-3xl font-bold text-center">Our Impact</h1>
+        <div
+          class="impact-container mt-5 w-11/12 mx-auto grid lg:grid-cols-3 md:grid-cols-2 gap-5"
+        >
+          <div class="card bg-white">
+            <div class="card-body items-center text-center">
+              <h2 class="card-title text-[#166534] font-bold text-2xl">
+                500K+
+              </h2>
+              <p>Trees Planted</p>
+            </div>
+          </div>
+          <div class="card bg-white">
+            <div class="card-body items-center text-center">
+              <h2 class="card-title text-[#166534] font-bold text-2xl">120+</h2>
+              <p>Communities Involved</p>
+            </div>
+          </div>
+          <div class="card bg-white">
+            <div class="card-body items-center text-center">
+              <h2 class="card-title text-[#166534] font-bold text-2xl">30+</h2>
+              <p>Countries Reached</p>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
     <!-- Main End -->

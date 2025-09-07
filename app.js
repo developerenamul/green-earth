@@ -12,6 +12,7 @@ const removeClass = (className) => {
 // 1. =======> LOAD TREE CATEGORIES <======
 
 const loadCategories = () => {
+  manageSpinner(true);
   fetch("https://openapi.programming-hero.com/api/categories")
     .then((res) => res.json())
     .then((data) => displayCategories(data.categories));
@@ -30,14 +31,16 @@ const displayCategories = (categories) => {
     <button onclick="loadCategoryTrees(${id})"  id="category${id}" class="btn btn-tree lg:w-full">${category_name}</button>
     `;
     categoriesContainer.appendChild(div);
+    manageSpinner(false);
   }
 };
 // 1.1 ========== LOAD CATEGORY TREES
 const loadCategoryTrees = (id) => {
-  console.log(id);
   removeClass("btn-tree");
   const clickedBtn = document.getElementById(`category${id}`);
   clickedBtn.classList.add("active");
+
+  manageSpinner(true);
   const url = `https://openapi.programming-hero.com/api/category/${id}`;
   fetch(url)
     .then((res) => res.json())
@@ -50,6 +53,7 @@ const loadCategoryTrees = (id) => {
 // 2. =========> LOAD ALL TRESS <=========
 
 const loadAllTress = () => {
+  manageSpinner(true);
   fetch("https://openapi.programming-hero.com/api/plants")
     .then((res) => res.json())
     .then((data) => displayTrees(data.plants));
@@ -86,6 +90,7 @@ const displayTrees = (plants) => {
   <button onclick="loadCart('${name}',${price},${id})" class="btn bg-[#15803D] text-white font-bold w-full rounded-full">Add to Cart</button>
     `;
     cardsContainer.append(div);
+    manageSpinner(false);
   }
 };
 
@@ -185,5 +190,21 @@ function filterCart(id) {
   cart = cart.filter((el) => el.id != id);
   displayCart(cart);
 }
-loadCategories();
-loadAllTress();
+
+// Loader Control
+
+function manageSpinner(status) {
+  const loader = document.getElementById("loader");
+  const cardsContainer = document.getElementById("carts-container");
+
+  if (status === true) {
+    loader.classList.remove("hidden");
+    cardsContainer.classList.add("hidden");
+  } else {
+    loader.classList.add("hidden");
+    cardsContainer.classList.remove("hidden");
+  }
+}
+
+// loadCategories();
+// loadAllTress();
