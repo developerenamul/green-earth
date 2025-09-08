@@ -138,7 +138,7 @@
           <div class="col-span-12 lg:col-span-2 bg-white rounded px-1">
             <h2 class="font-bold">Your Cart</h2>
             <div id="carts-container"></div>
-            <div class="flex justify-between">
+            <div class="flex justify-between hidden" id="total-bal">
               <h2 class="font-bold">Total:</h2>
               <h2 class="font-bold">
                 <i class="fa-solid fa-bangladeshi-taka-sign"></i
@@ -227,16 +227,22 @@
           <h1 class="text-white text-center text-2xl font bold mb-8">
             Plant a Tree Today
           </h1>
-          <div class="fieldset bg-[#15803D] rounded-box w-xs p-4">
-            <input type="text" class="input" placeholder="Your Name" />
-            <input type="text" class="input" placeholder="Your Email Address" />
-            <select class="select">
-              <option disabled selected>Number of Trees</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-            </select>
-            <button class="btn bg-[#facc15] rounded-full mt-4">Login</button>
+          <div class="">
+            <form class="fieldset bg-[#15803D] rounded-box w-xs p-4">
+              <input type="text" class="input" placeholder="Your Name" />
+              <input
+                type="text"
+                class="input"
+                placeholder="Your Email Address"
+              />
+              <select class="select">
+                <option disabled selected>Number of Trees</option>
+                <option>1 tree 5$</option>
+                <option>2 tree 9$</option>
+                <option>3 tree 13$</option>
+              </select>
+              <button class="btn bg-[#facc15] rounded-full mt-4">Login</button>
+            </form>
           </div>
         </div>
       </div>

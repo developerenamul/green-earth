@@ -84,7 +84,7 @@ const displayTrees = (plants) => {
     <p>${description ? description.slice(0, 60) : "working on it"}</p>
     <div class="flex justify-between my-4">
       <div class="text-[#15803D] px-3 py-1 rounded-full bg-[#DCFCE7]">${category}</div>
-      <div class="font-bold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${price}</div>
+      <div class="font-bold text-[#15803D]"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${price}</div>
     </div>
   </div>
   <button onclick="loadCart('${name}',${price},${id})" class="btn bg-[#15803D] text-white font-bold w-full rounded-full">Add to Cart</button>
@@ -108,12 +108,12 @@ const loadDetails = (id) => {
   const url = `https://openapi.programming-hero.com/api/plant/${id}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => diplsyDetails(data.plants));
+    .then((data) => displayDetails(data.plants));
 };
 
 // ======> Display Details <========
 
-const diplsyDetails = (plant) => {
+const displayDetails = (plant) => {
   const { name, image, description, category, price } = plant;
   const modalContainer = document.getElementById("modal-container");
   const modalBtn = document.getElementById("my_modal_5");
@@ -121,23 +121,26 @@ const diplsyDetails = (plant) => {
 
   //   create div
   const div = document.createElement("div");
-  div.className = "bg-white shadow-sm p-2 card flex flex-col h-[480px]";
+  div.className = "bg-white  p-2 card flex flex-col";
 
   div.innerHTML = `
-    
-    <figure class="h-[200px]">
+      <h2 class="card-title cursor-pointer mb-3">
+      ${name}
+    </h2>
+      <figure class="h-[250px]">
         <img class=" w-full h-full object-cover"
       src="${image}"
       alt="${name}" />
       </figure>
       <div class="flex-1">
-    <h2 class="card-title cursor-pointer">
-      ${name}
-    </h2>
-    <p>${description ? description : "working on it"}</p>
-    <div class="flex justify-between my-4">
-      <div class="text-[#15803D] px-3 py-1 rounded-full bg-[#DCFCE7]">${category}</div>
-      <div class="font-bold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${price}</div>
+    <div class="my-4">
+      <div class="text-[#15803D] px-3 py-1 rounded-full bg-[#DCFCE7]">
+      <h2>Category: ${category}</h2>
+      </div>
+      <div class="">
+      <h2 class="font-bold text-[#15803D] my-3"><i class="fa-solid fa-bangladeshi-taka-sign"></i>Price: ${price}</h2>
+      <p>Description : ${description ? description : "working on it"}</p>
+      </div>
     </div>
   </div>
     `;
@@ -147,12 +150,19 @@ const diplsyDetails = (plant) => {
 
 // ======> Cart Control <=======
 const loadCart = (treeName, price, id) => {
+  const totalContainer = document.getElementById("total-bal");
+  totalContainer.classList.remove("hidden");
   const treeInfo = {};
   treeInfo.name = treeName;
   treeInfo.price = price;
   treeInfo.id = id;
   cart.push(treeInfo);
-  //   const newCart = [...cart, treeInfo];
+  //   modal display
+  const modalContainer = document.getElementById("modal-container");
+  modalContainer.innerHTML = `
+    <h2 class="text-2xl font-bold">${treeName} added to the cart</h2>
+  `;
+  document.getElementById("my_modal_5").showModal();
   displayCart(cart);
 };
 // DISPLAY CART
@@ -163,6 +173,7 @@ function displayCart(trees) {
   if (trees.length === 0) {
     cartContainer.innerHTML = "";
     totalField.innerText = 0;
+    document.getElementById("total-bal").classList.add("hidden");
     return;
   }
 
@@ -178,7 +189,7 @@ function displayCart(trees) {
     <h2>${name}</h2>
     <h2>${price}</h2>
     </div>
-    <button onclick="filterCart(${id})" class="btn">❌</button>
+    <button onclick="filterCart(${id})" class="bg-gray-300 p-3 font-bold cursor-pointer text-xl">x</button>
   `;
     cartContainer.append(div);
   }
