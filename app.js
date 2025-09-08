@@ -189,7 +189,7 @@ function displayCart(trees) {
     <h2>${name}</h2>
     <h2>${price}</h2>
     </div>
-    <button onclick="filterCart(${id})" class="bg-gray-300 p-3 font-bold cursor-pointer text-xl">x</button>
+    <button onclick="filterCart(${id})" class="bg-gray-300 p-3 font-bold cursor-pointer text-xl text-red-600">x</button>
   `;
     cartContainer.append(div);
   }
