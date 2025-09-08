@@ -28,7 +28,7 @@ const displayCategories = (categories) => {
     const div = document.createElement("div");
     div.className = "my-2";
     div.innerHTML = `
-    <button onclick="loadCategoryTrees(${id})"  id="category${id}" class="btn btn-tree lg:w-full">${category_name}</button>
+    <button onclick="loadCategoryTrees(${id})"  id="category${id}" class="btn btn-tree lg:w-full hover:bg-green-400">${category_name}</button>
     `;
     categoriesContainer.appendChild(div);
     manageSpinner(false);
